@@ -1,8 +1,3 @@
-Voici un `README.md` complet que tu peux utiliser pour documenter ton projet de landing page **“DataMaster – Apprenez la Data Science en 90 jours”**. Il est rédigé de manière professionnelle, avec une structure claire, prêt à être copié dans ton dépôt GitHub :
-
----
-
-```markdown
 # 🚀 DataMaster – Formation Data Science en 90 jours
 
 Bienvenue sur la landing page de **DataMaster**, une formation fictive qui vise à accompagner les débutants vers le métier de data scientist en 90 jours. Ce projet met en avant mes compétences en HTML, Tailwind CSS, JavaScript et design d’interfaces web modernes.
