@@ -66,12 +66,6 @@ Le projet est hébergé gratuitement sur GitHub Pages :
 
 ---
 
-## 🙋 À propos
-
-Ce projet a été conçu dans le cadre d’un entraînement personnel pour me perfectionner dans le développement front-end et le web marketing. Il pourra être intégré dans mon futur portfolio en tant que **preuve de savoir-faire en création de landing pages performantes**.
-
----
-
 ## 📬 Contact
 
 Pour toute question ou collaboration :
