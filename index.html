@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprenez la Data Science en 90 jours</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .pulse-button {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #2ecc71, #27ae60);
+        }
+        
+        .stats-counter {
+            font-weight: 800;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #1a8c4a, #0d5c2e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-chart-line text-2xl text-green-600 mr-2"></i>
+                    <span class="text-xl font-bold text-gray-900">DataMaster</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#programme" class="text-gray-700 hover:text-green-600 transition">Programme</a>
+                    <a href="#temoignages" class="text-gray-700 hover:text-green-600 transition">Témoignages</a>
+                    <a href="#inscription" class="text-gray-700 hover:text-green-600 transition">S'inscrire</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Apprenez la <span class="text-yellow-300">Data Science</span> en 90 jours
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-blue-100">
+                        De zéro à data scientist junior, à votre rythme. Rejoignez 500+ étudiants qui ont transformé leur carrière.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <button class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-300 transition pulse-button">
+                            <i class="fas fa-play mr-2"></i>
+                            Commencer gratuitement
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-gray-900 transition">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            En savoir plus
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-6 text-blue-100">
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>90 jours flexibles</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-users mr-2"></i>
+                            <span>500+ étudiants</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-certificate mr-2"></i>
+                            <span>Certificat inclus</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <div class="stats-counter text-white font-extrabold">92%</div>
+                                <p class="text-blue-100">Taux de réussite</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="stats-counter text-white font-extrabold">3.2</div>
+                                <p class="text-blue-100">Projets/étudiant</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="stats-counter text-white font-extrabold">15h</div>
+                                <p class="text-blue-100">Support/semaine</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="stats-counter text-white font-extrabold">4.9/5</div>
+                                <p class="text-blue-100">Note moyenne</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pourquoi cette formation -->
+    <section class="py-20 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir DataMaster ?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une méthode éprouvée qui transforme les débutants en professionnels de la data en seulement 90 jours.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl fade-in">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bolt text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Apprentissage accéléré</h3>
+                    <p class="text-gray-600">Maîtrisez les concepts essentiels en 90 jours grâce à notre méthode progressive et intensive.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-2xl fade-in">
+                    <div class="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-project-diagram text-2xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Projets réels</h3>
+                    <p class="text-gray-600">Construisez un portfolio solide avec des projets concrets inspirés de l'industrie.</p>
+                </div>
+                
+                <div class="text-center card-hover bg-gradient-to-br from-teal-50 to-green-50 p-8 rounded-2xl fade-in">
+                    <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-teal-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Accompagnement personnalisé</h3>
+                    <p class="text-gray-600">Bénéficiez d'un suivi individuel et d'une communauté active d'apprenants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programme -->
+    <section id="programme" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Programme de formation</h2>
+                <p class="text-xl text-gray-600">Un parcours structuré pour vous mener de débutant à data scientist junior</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="space-y-8">
+                    <div class="timeline-item relative pl-8 fade-in">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">1</div>
+                                <h3 class="text-2xl font-bold text-gray-900">Mois 1 : Fondamentaux</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Maîtrisez les bases essentielles pour manipuler et analyser des données.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">NumPy</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Pandas</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Jupyter</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative pl-8 fade-in">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">2</div>
+                                <h3 class="text-2xl font-bold text-gray-900">Mois 2 : Visualisation</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Créez des graphiques impactants pour communiquer vos insights.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Matplotlib</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Seaborn</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Plotly</span>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Tableau</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item relative pl-8 fade-in">
+                        <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-teal-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold mr-4">3</div>
+                                <h3 class="text-2xl font-bold text-gray-900">Mois 3 : Machine Learning</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Découvrez les algorithmes d'apprentissage automatique les plus utilisés.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Scikit-learn</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Régression</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Classification</span>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Clustering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section id="temoignages" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ce que disent nos étudiants</h2>
+                <p class="text-xl text-gray-600">Plus de 500 professionnels ont déjà transformé leur carrière avec DataMaster</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl card-hover fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Fatou" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Fatou Diallo</h4>
+                            <p class="text-sm text-gray-600">Comptable → Data Analyst</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Je ne connaissais rien à la data, aujourd'hui je fais des projets sur GitHub et j'ai trouvé un poste de data analyst dans une startup !"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl card-hover fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" alt="Jules" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Jules Martin</h4>
+                            <p class="text-sm text-gray-600">Commercial → Data Scientist</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Formation claire, structurée et motivante. Les projets concrets m'ont permis de décrocher un CDI en data science !"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl card-hover fade-in">
+                    <div class="flex items-center mb-6">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop&crop=face" alt="Marie" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-900">Marie Dubois</h4>
+                            <p class="text-sm text-gray-600">RH → Business Analyst</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"L'accompagnement personnalisé fait toute la différence. Je recommande vivement cette formation !"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire d'inscription -->
+    <section id="inscription" class="py-20 gradient-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-4xl font-bold text-white mb-4">Prêt à transformer votre carrière ?</h2>
+                <p class="text-xl text-blue-100">Inscrivez-vous maintenant et recevez le guide gratuit "Python pour débutants"</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 fade-in">
+                <form class="space-y-6" id="inscriptionForm">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-white font-medium mb-2">Prénom et nom *</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition">
+                        </div>
+                        <div>
+                            <label class="block text-white font-medium mb-2">Email *</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-2">Niveau actuel en programmation</label>
+                        <select class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition">
+                            <option>Débutant complet</option>
+                            <option>Quelques notions</option>
+                            <option>Niveau intermédiaire</option>
+                            <option>Niveau avancé</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-white font-medium mb-2">Qu'est-ce qui vous motive ?</label>
+                        <textarea rows="3" class="w-full px-4 py-3 rounded-xl border-0 bg-white/90 focus:bg-white focus:ring-2 focus:ring-yellow-400 transition" placeholder="Reconversion, évolution de carrière, passion..."></textarea>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" required class="mr-3 w-4 h-4">
+                        <label class="text-white text-sm">J'accepte de recevoir des informations sur la formation par email</label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-yellow-400 text-gray-900 py-4 rounded-xl font-bold text-lg hover:bg-yellow-300 transition pulse-button">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Je veux être prévenu du lancement !
+                    </button>
+                    
+                    <p class="text-center text-blue-100 text-sm">
+                        <i class="fas fa-gift mr-1"></i>
+                        Bonus : Recevez immédiatement le guide "Python pour débutants" (PDF 50 pages)
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Questions fréquentes</h2>
+                <p class="text-xl text-gray-600">Tout ce que vous devez savoir sur la formation</p>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl p-6 shadow-sm fade-in">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Dois-je avoir des bases en programmation ?</h3>
+                    <p class="text-gray-600">Non ! Notre formation est conçue pour les débutants. Nous partons de zéro et vous accompagnons à chaque étape.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm fade-in">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Combien de temps dois-je consacrer par jour ?</h3>
+                    <p class="text-gray-600">Comptez 2-3h par jour en moyenne. La formation est flexible et s'adapte à votre rythme.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm fade-in">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Y a-t-il un certificat à la fin ?</h3>
+                    <p class="text-gray-600">Oui, vous recevrez un certificat de completion reconnu par l'industrie + un portfolio GitHub.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-sm fade-in">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Quel support technique est disponible ?</h3>
+                    <p class="text-gray-600">Support 7j/7 via Slack, sessions Q&A hebdomadaires et mentorat personnalisé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-chart-line text-2xl text-green-600 mr-2"></i>
+                        <span class="text-xl font-bold">DataMaster</span>
+                    </div>
+                    <p class="text-gray-400">La formation data science qui transforme votre carrière en 90 jours.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Formation</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-green-400 transition">Programme</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Témoignages</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Tarifs</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Ressources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-green-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Guides gratuits</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Communauté</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>contact@datamaster.fr</li>
+                        <li><i class="fas fa-phone mr-2"></i>+33 1 23 45 67 89</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-green-400 transition">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 DataMaster. Tous droits réservés. | 
+                   <a href="#" class="hover:text-green-400 transition">Mentions légales</a> | 
+                   <a href="#" class="hover:text-green-400 transition">Politique de confidentialité</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gestion du formulaire
+        document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Animation de succès
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check mr-2"></i>Inscription enregistrée !';
+            button.classList.remove('bg-yellow-400', 'hover:bg-yellow-300');
+            button.classList.add('bg-green-500');
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.classList.remove('bg-green-500');
+                button.classList.add('bg-yellow-400', 'hover:bg-yellow-300');
+                
+                // Reset du formulaire
+                this.reset();
+                
+                // Message de confirmation
+                alert('Merci pour votre inscription ! Vous allez recevoir le guide Python par email dans quelques minutes.');
+            }, 2000);
+        });
+
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation des compteurs
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stats-counter');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const isPercentage = target.includes('%');
+                const isRating = target.includes('/');
+                let endValue;
+                
+                if (isPercentage) {
+                    endValue = parseInt(target);
+                } else if (isRating) {
+                    endValue = parseFloat(target);
+                } else {
+                    endValue = parseFloat(target);
+                }
+                
+                let current = 0;
+                const increment = endValue / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= endValue) {
+                        current = endValue;
+                        clearInterval(timer);
+                    }
+                    
+                    if (isPercentage) {
+                        counter.textContent = Math.floor(current) + '%';
+                    } else if (isRating) {
+                        counter.textContent = current.toFixed(1) + '/5';
+                    } else {
+                        counter.textContent = current.toFixed(1);
+                    }
+                }, 30);
+            });
+        }
+
+        // Déclencher l'animation des compteurs quand la section hero est visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroSection = document.querySelector('.gradient-bg');
+        if (heroSection) {
+            heroObserver.observe(heroSection);
+        }
+
+        // Menu mobile (simple toggle)
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'md:hidden bg-white border-t';
+        mobileMenu.innerHTML = `
+            <div class="px-4 py-2 space-y-1">
+                <a href="#programme" class="block py-2 text-gray-700 hover:text-green-600">Programme</a>
+                <a href="#temoignages" class="block py-2 text-gray-700 hover:text-green-600">Témoignages</a>
+                <a href="#inscription" class="block py-2 text-gray-700 hover:text-green-600">S'inscrire</a>
+            </div>
+        `;
+        mobileMenu.style.display = 'none';
+
+        if (mobileMenuButton) {
+            mobileMenuButton.parentNode.parentNode.appendChild(mobileMenu);
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.style.display = mobileMenu.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+
+        // Effet parallaxe léger pour le hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.gradient-bg');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
